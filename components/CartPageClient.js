@@ -8,7 +8,9 @@ import Link from "next/link";
 
 export default function CartPageClient() {
   const { cart } = useCart();
-  const total = getCartTotal(cart);
+  const subtotal = getCartTotal(cart);
+  const deliveryFee = cart.length > 0 ? 150 : 0;
+  const total = subtotal + deliveryFee;
 
   return (
     <section className="px-5 py-16 sm:px-8">
@@ -39,19 +41,61 @@ export default function CartPageClient() {
             </Link>
           </div>
         ) : (
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="grid gap-4">
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+            <div className="grid gap-4 self-start">
               {cart.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
-              <div className="rounded-[1.5rem] bg-[color:var(--cream)] p-5 ring-1 ring-[color:var(--border)]">
-                <div className="flex items-center justify-between text-lg font-bold text-[color:var(--text)]">
-                  <span>Total</span>
-                  <span>{formatPrice(total, cart[0]?.currency || "INR")}</span>
+              <div className="rounded-[2rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.65),rgba(255,241,247,0.55))] p-6 shadow-[0_18px_60px_rgba(201,20,93,0.08)] backdrop-blur-sm sm:p-7">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-[color:var(--pink)]">
+                      Order Summary
+                    </p>
+                    <h2 className="mt-2 font-serif text-2xl font-semibold text-[color:var(--text)]">
+                      Your total
+                    </h2>
+                  </div>
+                  <div className="rounded-full bg-[color:var(--soft-pink)] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--pink-dark)]">
+                    Ready to checkout
+                  </div>
+                </div>
+
+                <div className="mt-6 space-y-3 text-sm text-[color:var(--muted)]">
+                  <div className="flex items-center justify-between">
+                    <span>Subtotal</span>
+                    <span className="font-semibold text-[color:var(--text)]">
+                      {formatPrice(subtotal, cart[0]?.currency || "INR")}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Delivery</span>
+                    <span className="font-semibold text-[color:var(--text)]">
+                      {formatPrice(deliveryFee, cart[0]?.currency || "INR")}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="my-5 h-px bg-[color:var(--border)]/70" />
+
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-[color:var(--muted)]">
+                      Total
+                    </p>
+                    <p className="mt-1 text-xs text-[color:var(--muted)]">
+                      Including flat delivery
+                    </p>
+                  </div>
+                  <span className="font-sans text-3xl font-semibold leading-none text-[color:var(--pink)]">
+                    {formatPrice(total, cart[0]?.currency || "INR")}
+                  </span>
                 </div>
               </div>
             </div>
-            <CheckoutForm />
+            <div className="self-start">
+              <CheckoutForm />
+            </div>
           </div>
         )}
       </div>

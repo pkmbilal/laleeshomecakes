@@ -43,10 +43,25 @@ export default function CartItem({ item }) {
         </div>
         <button
           type="button"
-          className="text-sm font-bold text-[color:var(--pink)] hover:text-[color:var(--pink-dark)]"
+          className="rounded-full bg-[color:var(--soft-pink)] px-4 py-2 text-sm font-bold text-[color:var(--pink)] transition hover:bg-[color:var(--border)] hover:text-[color:var(--pink-dark)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
           onClick={() => removeItem(item.id)}
         >
-          Remove
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="size-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 7h16" />
+            <path d="M9 7V5.75A1.75 1.75 0 0 1 10.75 4h2.5A1.75 1.75 0 0 1 15 5.75V7" />
+            <path d="M6.5 7l.8 11a2 2 0 0 0 2 1.82h5.4a2 2 0 0 0 2-1.82l.8-11" />
+            <path d="M10 11v5" />
+            <path d="M14 11v5" />
+          </svg>
         </button>
       </div>
     </article>
