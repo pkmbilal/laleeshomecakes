@@ -1,18 +1,19 @@
 "use client";
 
 import { useCart } from "@/components/CartContext";
-import { formatPrice } from "@/lib/cart";
+import { formatPrice, getCartItemQuantity } from "@/lib/cart";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function CakeCard({ product }) {
-  const { addItem } = useCart();
-  const [added, setAdded] = useState(false);
+  const { cart, addItem, setItemQuantity } = useCart();
+  const quantity = getCartItemQuantity(cart, product.id);
 
-  function handleAdd() {
+  function handleIncrement() {
     addItem(product);
-    setAdded(true);
-    window.setTimeout(() => setAdded(false), 1200);
+  }
+
+  function handleDecrement() {
+    setItemQuantity(product.id, quantity - 1);
   }
 
   return (
@@ -40,13 +41,37 @@ export default function CakeCard({ product }) {
           <p className="text-lg font-bold text-[color:var(--text)]">
             {formatPrice(product.price, product.currency)}
           </p>
-          <button
-            type="button"
-            onClick={handleAdd}
-            className="rounded-full bg-[color:var(--pink)] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(236,27,114,0.25)] transition hover:bg-[color:var(--pink-dark)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
-          >
-            {added ? "Added" : "Add to Cart"}
-          </button>
+          {quantity > 0 ? (
+            <div className="flex items-center rounded-full bg-[color:var(--soft-pink)] p-1">
+              <button
+                type="button"
+                onClick={handleDecrement}
+                aria-label={`Decrease ${product.name} quantity`}
+                className="grid size-9 place-items-center rounded-full bg-white text-lg font-bold text-[color:var(--text)] transition hover:text-[color:var(--pink)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
+              >
+                -
+              </button>
+              <span className="min-w-10 px-2 text-center text-sm font-bold text-[color:var(--text)]">
+                {quantity}
+              </span>
+              <button
+                type="button"
+                onClick={handleIncrement}
+                aria-label={`Increase ${product.name} quantity`}
+                className="grid size-9 place-items-center rounded-full bg-white text-lg font-bold text-[color:var(--text)] transition hover:text-[color:var(--pink)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={handleIncrement}
+              className="rounded-full bg-[color:var(--pink)] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(236,27,114,0.25)] transition hover:bg-[color:var(--pink-dark)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </article>
