@@ -19,7 +19,7 @@ export default function CartPageClient() {
           <p className="text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--pink)]">
             Cart / Checkout
           </p>
-          <h1 className="mt-3 font-serif text-5xl font-semibold leading-tight text-[color:var(--text)]">
+          <h1 className="mt-3 whitespace-nowrap font-serif text-3xl font-semibold leading-tight text-[color:var(--text)] sm:text-5xl">
             Review your cake order
           </h1>
         </div>
@@ -46,22 +46,22 @@ export default function CartPageClient() {
               {cart.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
-              <div className="rounded-[2rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.65),rgba(255,241,247,0.55))] p-6 shadow-[0_18px_60px_rgba(201,20,93,0.08)] backdrop-blur-sm sm:p-7">
-                <div className="flex items-center justify-between">
+              <div className="rounded-[1.5rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.65),rgba(255,241,247,0.55))] p-4 shadow-[0_12px_36px_rgba(201,20,93,0.06)] backdrop-blur-sm sm:rounded-[2rem] sm:p-6 sm:shadow-[0_18px_60px_rgba(201,20,93,0.08)]">
+                <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-[color:var(--pink)]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--pink)] sm:text-xs sm:tracking-[0.22em]">
                       Order Summary
                     </p>
-                    <h2 className="mt-2 font-serif text-2xl font-semibold text-[color:var(--text)]">
-                      Your total
+                    <h2 className="mt-1 font-serif text-lg font-semibold text-[color:var(--text)] sm:mt-2 sm:text-2xl">
+                      Total
                     </h2>
                   </div>
-                  <div className="rounded-full bg-[color:var(--soft-pink)] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--pink-dark)]">
+                  <div className="rounded-full bg-[color:var(--soft-pink)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[color:var(--pink-dark)] sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.18em]">
                     Ready to checkout
                   </div>
                 </div>
 
-                <div className="mt-6 space-y-3 text-sm text-[color:var(--muted)]">
+                <div className="mt-4 space-y-2 text-xs text-[color:var(--muted)] sm:mt-6 sm:space-y-3 sm:text-sm">
                   <div className="flex items-center justify-between">
                     <span>Subtotal</span>
                     <span className="font-semibold text-[color:var(--text)]">
@@ -76,18 +76,18 @@ export default function CartPageClient() {
                   </div>
                 </div>
 
-                <div className="my-5 h-px bg-[color:var(--border)]/70" />
+                <div className="my-3 h-px bg-[color:var(--border)]/70 sm:my-5" />
 
-                <div className="flex items-end justify-between gap-4">
+                <div className="flex items-end justify-between gap-3">
                   <div>
-                    <p className="text-sm font-semibold text-[color:var(--muted)]">
+                    <p className="text-xs font-semibold text-[color:var(--muted)] sm:text-sm">
                       Total
                     </p>
-                    <p className="mt-1 text-xs text-[color:var(--muted)]">
+                    <p className="mt-1 text-[10px] text-[color:var(--muted)] sm:text-xs">
                       Including flat delivery
                     </p>
                   </div>
-                  <span className="font-sans text-3xl font-semibold leading-none text-[color:var(--pink)]">
+                  <span className="font-sans text-2xl font-semibold leading-none text-[color:var(--pink)] sm:text-3xl">
                     {formatPrice(total, cart[0]?.currency || "INR")}
                   </span>
                 </div>

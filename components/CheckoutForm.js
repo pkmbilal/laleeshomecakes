@@ -63,7 +63,7 @@ export default function CheckoutForm() {
       onSubmit={handleSubmit}
       className="rounded-[1.75rem] bg-white p-5 shadow-[0_20px_60px_rgba(201,20,93,0.10)] ring-1 ring-[color:var(--border)] sm:p-6"
     >
-      <h2 className="font-serif text-3xl font-semibold text-[color:var(--text)]">
+      <h2 className="whitespace-nowrap font-serif text-3xl font-semibold text-[color:var(--text)] sm:text-3xl">
         Checkout Details
       </h2>
       <div className="mt-6 grid gap-4">
@@ -119,7 +119,7 @@ export default function CheckoutForm() {
       )}
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-[color:var(--pink)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(236,27,114,0.25)] transition hover:bg-[color:var(--pink-dark)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)]"
+        className="mt-6 w-full rounded-full bg-[color:var(--pink)] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_40px_rgba(236,27,114,0.25)] transition hover:bg-[color:var(--pink-dark)] focus:outline-none focus:ring-4 focus:ring-[color:var(--border)] sm:px-6 sm:py-4"
       >
         Send Order on WhatsApp
       </button>
