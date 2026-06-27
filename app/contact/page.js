@@ -1,4 +1,5 @@
 import PageShell from "@/components/PageShell";
+import QuickEnquiryForm from "@/components/QuickEnquiryForm";
 import SectionHeading from "@/components/SectionHeading";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -9,7 +10,47 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`;
+  const detailCards = [
+    {
+      title: "Phone",
+      value: siteConfig.phone,
+      icon: (
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.91.33 1.8.62 2.65a2 2 0 0 1-.45 2.11L8 9.76a16 16 0 0 0 6.24 6.24l1.28-1.28a2 2 0 0 1 2.11-.45c.85.29 1.74.5 2.65.62A2 2 0 0 1 22 16.92z" />
+      ),
+    },
+    {
+      title: "Email",
+      value: siteConfig.email,
+      icon: (
+        <>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 7 9 6 9-6" />
+        </>
+      ),
+    },
+    {
+      title: "Location",
+      value: siteConfig.address,
+      icon: (
+        <>
+          <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </>
+      ),
+    },
+    {
+      title: "Delivery",
+      value: siteConfig.deliveryAreas,
+      icon: (
+        <>
+          <path d="M3 7h11v10H3z" />
+          <path d="M14 10h4l3 3v4h-7z" />
+          <circle cx="7" cy="18" r="2" />
+          <circle cx="18" cy="18" r="2" />
+        </>
+      ),
+    },
+  ];
 
   return (
     <PageShell>
@@ -20,71 +61,38 @@ export default function ContactPage() {
             title="Plan your next cake order"
             text="Send your celebration date, cake idea, delivery preference, and any design notes."
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[1.75rem] bg-white p-6 shadow-[0_20px_60px_rgba(201,20,93,0.10)] ring-1 ring-[color:var(--border)]">
-              <h1 className="font-serif text-3xl font-semibold text-[color:var(--text)]">
-                Business details
-              </h1>
-              <dl className="mt-6 grid gap-4 text-sm">
-                <div>
-                  <dt className="font-bold text-[color:var(--pink)]">Phone</dt>
-                  <dd className="mt-1 text-[color:var(--muted)]">{siteConfig.phone}</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-[color:var(--pink)]">Email</dt>
-                  <dd className="mt-1 text-[color:var(--muted)]">{siteConfig.email}</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-[color:var(--pink)]">Location</dt>
-                  <dd className="mt-1 text-[color:var(--muted)]">{siteConfig.address}</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-[color:var(--pink)]">Delivery</dt>
-                  <dd className="mt-1 text-[color:var(--muted)]">
-                    {siteConfig.deliveryAreas}
-                  </dd>
-                </div>
-              </dl>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex w-full justify-center rounded-full bg-[color:var(--pink)] px-6 py-4 text-sm font-bold text-white shadow-[0_18px_40px_rgba(236,27,114,0.25)] transition hover:bg-[color:var(--pink-dark)]"
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {detailCards.map((card) => (
+              <article
+                key={card.title}
+                className="rounded-[1.5rem] bg-white/85 p-5 shadow-[0_18px_50px_rgba(201,20,93,0.08)] ring-1 ring-[color:var(--border)]"
               >
-                Message on WhatsApp
-              </a>
-              <div className="mt-5 flex gap-4 text-sm font-bold text-[color:var(--pink)]">
-                <a href={siteConfig.instagram}>Instagram</a>
-                <a href={siteConfig.facebook}>Facebook</a>
-              </div>
-            </div>
+                <span className="inline-flex size-11 items-center justify-center rounded-full bg-[color:var(--soft-pink)] text-[color:var(--pink)]">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="size-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.9"
+                  >
+                    {card.icon}
+                  </svg>
+                </span>
+                <h2 className="mt-4 text-sm font-bold uppercase tracking-[0.18em] text-[color:var(--pink)]">
+                  {card.title}
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">
+                  {card.value}
+                </p>
+              </article>
+            ))}
+          </div>
 
-            <form className="rounded-[1.75rem] bg-white/80 p-6 ring-1 ring-[color:var(--border)]">
-              <h2 className="font-serif text-3xl font-semibold text-[color:var(--text)]">
-                Quick enquiry
-              </h2>
-              <div className="mt-6 grid gap-4">
-                <label className="grid gap-2 text-sm font-semibold text-[color:var(--text)]">
-                  Name
-                  <input className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--soft-pink)] px-4 py-3 outline-none focus:ring-4 focus:ring-[color:var(--border)]" />
-                </label>
-                <label className="grid gap-2 text-sm font-semibold text-[color:var(--text)]">
-                  Occasion
-                  <input className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--soft-pink)] px-4 py-3 outline-none focus:ring-4 focus:ring-[color:var(--border)]" />
-                </label>
-                <label className="grid gap-2 text-sm font-semibold text-[color:var(--text)]">
-                  Message
-                  <textarea
-                    rows={5}
-                    className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--soft-pink)] px-4 py-3 outline-none focus:ring-4 focus:ring-[color:var(--border)]"
-                  />
-                </label>
-              </div>
-              <p className="mt-5 text-sm leading-6 text-[color:var(--muted)]">
-                This form is a visual helper only. Please use WhatsApp or the
-                cart checkout to send your order details.
-              </p>
-            </form>
+          <div className="mt-8">
+            <QuickEnquiryForm />
           </div>
         </div>
       </section>
