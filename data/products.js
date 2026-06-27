@@ -8,7 +8,6 @@ export const products = [
     image: "/images/cake-1.png",
     description:
       "Soft vanilla sponge layered with fresh cream, berries, and blush pink details.",
-    featured: true,
   },
   {
     id: "chocolate-anniversary-cake",
@@ -19,7 +18,6 @@ export const products = [
     image: "/images/cake-2.png",
     description:
       "Rich chocolate cake finished with glossy ganache and elegant celebration accents.",
-    featured: true,
   },
   {
     id: "custom-theme-cake",
@@ -30,7 +28,6 @@ export const products = [
     image: "/images/cake-3.png",
     description:
       "Personalized cake design made to match your celebration theme and favorite flavors.",
-    featured: true,
   },
   {
     id: "cupcake-dessert-box",
@@ -41,7 +38,6 @@ export const products = [
     image: "/images/cake-4.png",
     description:
       "A sweet assortment of cupcakes and mini desserts for gifting or dessert tables.",
-    featured: true,
   },
   {
     id: "raspberry-rose-cake",
@@ -52,7 +48,6 @@ export const products = [
     image: "/images/cake-raspberry-rose.png",
     description:
       "A soft cream cake with raspberry notes, rose-style piping, and delicate pink decoration.",
-    featured: false,
   },
   {
     id: "classic-black-forest-cake",
@@ -63,7 +58,6 @@ export const products = [
     image: "/images/cake-black-forest.png",
     description:
       "Chocolate sponge layered with whipped cream, cherries, and a rich chocolate finish.",
-    featured: false,
   },
   {
     id: "floral-custom-cake",
@@ -74,7 +68,6 @@ export const products = [
     image: "/images/cake-floral-custom.png",
     description:
       "A custom floral cake designed around your colors, message, and celebration theme.",
-    featured: false,
   },
   {
     id: "mini-treats-party-box",
@@ -85,7 +78,6 @@ export const products = [
     image: "/images/cake-mini-treats.png",
     description:
       "Bite-sized cupcakes and dessert treats prepared for parties, gifting, and dessert tables.",
-    featured: false,
   },
 ];
 

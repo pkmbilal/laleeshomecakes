@@ -12,7 +12,7 @@ export const metadata = {
     "Fresh handmade birthday, anniversary, custom cakes, cupcakes, and desserts from Lalees Home Cakes.",
 };
 
-const featuredProducts = products.filter((product) => product.featured);
+const newlyAddedProducts = products.slice(-4);
 
 export default function Home() {
   return (
@@ -22,12 +22,12 @@ export default function Home() {
       <MotionSection className="px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Featured cakes"
-            title="Sweet designs for memorable moments"
-            text="Our best-loved cakes are made with soft sponge, fresh cream, and decoration tailored for your celebration."
+            eyebrow="Newly added"
+            title="Fresh additions to the cake menu"
+            text="Our latest cakes and dessert boxes are ready for birthdays, anniversaries, and custom celebrations."
           />
           <div className="mt-10">
-            <ProductGrid products={featuredProducts} />
+            <ProductGrid products={newlyAddedProducts} />
           </div>
           <div className="mt-10 text-center">
             <Link
